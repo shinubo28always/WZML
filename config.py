@@ -70,10 +70,21 @@ AUTHOR_NAME = "TENKA"
 AUTHOR_URL = "https://t.me/cantarella_wuwa"
 INSTADL_API = ""
 IMDB_TEMPLATE = ""
-IMAGES = []
+IMAGES = [
+    "https://i.pinimg.com/564x/b5/6a/22/b56a229148586984a9333522caa533b9.jpg",
+    "https://i.pinimg.com/736x/00/64/e5/0064e52ee1fbe13a1d58645dd968a286.jpg",
+    "https://i.pinimg.com/736x/eb/dd/9e/ebdd9ef30457d32bd5ee0b9c22606078.jpg",
+    "https://i.pinimg.com/736x/ff/3e/0a/ff3e0a570aa6fdc2c3d2d291e3d6a4a8.jpg",
+    "https://i.pinimg.com/736x/d1/39/bf/d139bfbcfb71af1e9e2ff8afca32201c.jpg",
+    "https://i.pinimg.com/564x/4c/e6/c2/4ce6c2b18fca27227e8262d16b3c4855.jpg",
+    "https://i.pinimg.com/564x/48/ea/00/48ea0003ab040bf6395fee71220a4420.jpg",
+    "https://i.pinimg.com/736x/33/5b/17/335b17b76f53d46ab8c95063222b8074.jpg",
+    "https://i.pinimg.com/564x/fb/eb/af/fbebafee28eed8b1b776673e545830b4.jpg",
+    "https://i.pinimg.com/564x/87/18/2b/87182be3e5d4a482a0f10083131aab6e.jpg",
+]
 IMG_SEARCH = ""
 IMG_PAGE = 1
-USE_IMAGES = False
+USE_IMAGES = True
 IMG_SOURCES = ["wallpaperflare"]
 INC_TASK_NOTIFY = False
 INC_TASK_RESUME = False

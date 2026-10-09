@@ -1,5 +1,4 @@
 from asyncio import sleep, gather
-from random import choice
 from re import match as re_match
 from time import time
 
@@ -42,9 +41,20 @@ from ..ext_utils.exceptions import TgLinkException
 from ..ext_utils.status_utils import get_readable_message
 from .button_build import ButtonMaker
 
+_image_index = 0
+
+
+def get_next_image():
+    global _image_index
+    if not Config.USE_IMAGES or not Config.IMAGES:
+        return None
+    img = Config.IMAGES[_image_index % len(Config.IMAGES)]
+    _image_index = (_image_index + 1) % len(Config.IMAGES)
+    return img
+
 
 async def send_message(message, text, buttons=None, block=True, photo=None, **kwargs):
-    img_photo = choice(Config.IMAGES) if (photo == "IMAGES" and Config.USE_IMAGES and Config.IMAGES) else (None if photo == "IMAGES" else photo)
+    img_photo = get_next_image() if photo == "IMAGES" else photo
     try:
         if img_photo:
             try:
@@ -143,7 +153,7 @@ async def send_message(message, text, buttons=None, block=True, photo=None, **kw
 
 
 async def edit_message(message, text, buttons=None, block=True, photo=None):
-    img_photo = choice(Config.IMAGES) if (photo == "IMAGES" and Config.USE_IMAGES and Config.IMAGES) else (None if photo == "IMAGES" else photo)
+    img_photo = get_next_image() if photo == "IMAGES" else photo
     try:
         if not isinstance(text, str):
             text = str(text)

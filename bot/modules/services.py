@@ -32,11 +32,8 @@ from ..helper.telegram_helper.message_utils import (
 
 async def _build_start_buttons():
     buttons = ButtonMaker()
-    lang = Language()
-    buttons.url_button(
-        lang.START_BUTTON1, "https://github.com/abhinai2244/CBML", "header"
-    )
-    buttons.url_button(lang.START_BUTTON2, "https://t.me/cantarellabots", "header")
+    buttons.url_button("ᴜᴘᴅᴀᴛᴇs", "https://t.me/ST_Rename_Update", "header")
+    buttons.url_button("sᴜᴘᴘᴏʀᴛ", "https://t.me/Unrated_Coder", "header")
 
     chat_ids = list(auth_chats.keys())
     if Config.AUTHORIZED_CHATS:
@@ -71,10 +68,9 @@ async def _build_start_buttons():
                 buttons.url_button(title, link, position="default")
 
     buttons.url_button(
-        "TENKA IZUMO",
-        "https://t.me/cantarella_wuwa",
+        "sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ",
+        "https://github.com/aquib4040/AZML.git",
         position="footer",
-        style=ButtonStyle.DANGER,
     )
 
     return buttons.build_menu(b_cols=3, h_cols=2, f_cols=1)
@@ -136,17 +132,13 @@ async def start(_, message):
     help_cmd = BotCommands.HelpCommand[0] if isinstance(BotCommands.HelpCommand, list) else BotCommands.HelpCommand
     if await CustomFilters.authorized(_, message):
         start_string = (
-            f"<b>👋 Welcome, {escape(user_name)}!</b>\n\n"
-            f"<blockquote><b>CANTARELLABOTS</b> is ready to mirror and leech files, torrents, and cloud links to Telegram or Cloud Storage.</blockquote>\n\n"
-            f"<b>💡 Commands & Help:</b> Use /{help_cmd} to view all available commands and guides.\n"
-            f"<b>💬 Authorized Chats:</b> Click any of the authorized chat buttons below to access supported groups."
+            f"𝑇ℎ𝑖𝑠 𝑏𝑜𝑡 𝑐𝑎𝑛 𝑚𝑖𝑟𝑟𝑜𝑟 𝑎𝑙𝑙 𝑦𝑜𝑢𝑟 𝑙𝑖𝑛𝑘𝑠/𝑓𝑖𝑙𝑒𝑠/𝑡𝑜𝑟𝑟𝑒𝑛𝑡𝑠 𝑡𝑜 𝐺𝑜𝑜𝑔𝑙𝑒 𝐷𝑟𝑖𝑣𝑒 𝑜𝑟 𝑎𝑛𝑦 𝑟𝑐𝑙𝑜𝑛𝑒 𝑐𝑙𝑜𝑢𝑑 𝑜𝑟 𝑡𝑜 𝑡𝑒𝑙𝑒𝑔𝑟𝑎𝑚 𝑜𝑟 𝑡𝑜 𝑑𝑑𝑙 𝑠𝑒𝑟𝑣𝑒𝑟𝑠.\n"
+            f"𝑇𝑦𝑝𝑒 /{help_cmd} 𝑡𝑜 𝑔𝑒𝑡 𝑎 𝑙𝑖𝑠𝑡 𝑜𝑓 𝑎𝑣𝑎𝑖𝑙𝑎𝑏𝑙𝑒 𝑐𝑜𝑚𝑚𝑎𝑛𝑑𝑠."
         )
         await send_message(message, start_string, reply_markup, photo="IMAGES")
     elif Config.BOT_PM:
         start_string = (
-            f"<b>👋 Welcome, {escape(user_name)}!</b>\n\n"
-            f"<blockquote>Bot will send all your files and links here in private message. Start using now!</blockquote>\n\n"
-            f"<b>💬 Authorized Chats:</b> Join any authorized chat below to start tasks."
+            "𝑁𝑜𝑤, 𝑇ℎ𝑖𝑠 𝑏𝑜𝑡 𝑤𝑖𝑙𝑙 𝑠𝑒𝑛𝑑 𝑎𝑙𝑙 𝑦𝑜𝑢𝑟 𝑓𝑖𝑙𝑒𝑠 𝑎𝑛𝑑 𝑙𝑖𝑛𝑘𝑠 ℎ𝑒𝑟𝑒. 𝑆𝑡𝑎𝑟𝑡 𝑈𝑠𝑖𝑛𝑔 ..."
         )
         await send_message(
             message,
@@ -156,10 +148,7 @@ async def start(_, message):
         )
     else:
         start_string = (
-            f"<b>👋 Welcome to CANTARELLABOTS, {escape(user_name)}!</b>\n\n"
-            f"<blockquote>Mirror and leech files, torrents, and links to Telegram or Cloud Storage.\n\n"
-            f"<b>Note:</b> You are not authorized to use this bot instance directly in private.</blockquote>\n\n"
-            f"<b>💬 Authorized Chats:</b> Join our authorized chats below to get access."
+            "𝑌𝑜𝑢 𝐴𝑟𝑒 𝑛𝑜𝑡 𝑎𝑢𝑡ℎ𝑜𝑟𝑖𝑧𝑒𝑑 𝑢𝑠𝑒𝑟! 𝐷𝑒𝑝𝑙𝑜𝑦 𝑦𝑜𝑢𝑟 𝑜𝑤𝑛 𝑀𝑖𝑟𝑟𝑜𝑟-𝐿𝑒𝑒𝑐ℎ 𝑏𝑜𝑡."
         )
         await send_message(
             message,
