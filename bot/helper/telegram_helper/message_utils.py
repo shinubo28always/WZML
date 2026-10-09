@@ -1,190 +1,712 @@
-# Config File for CBML Bot
-# ANY ISSUES FOUND IN THIS FILE SHOULD BE REPORTED TO @CANTARELLA_WUWA IN TELEGRAM
-# Required Variables
-BOT_TOKEN = ""
-OWNER_ID = 
-TELEGRAM_API = 
-TELEGRAM_HASH = ""
+from asyncio import sleep, gather
+from re import match as re_match
+from time import time
 
-# Optional Configuration
-ALLDEBRID_API_KEY = ""
-ALLDEBRID_NO_SEED_TIMEOUT = 180
-AS_DOCUMENT = False
-AUTHORIZED_CHATS = ""
-BASE_URL = ""
-HELPER_TOKENS = ""
-HELPER_STRINGS = ""
-STREAM_TOKENS = ""
-HELPER_BOT_PROXIES = ""
-HELPER_USER_PROXIES = ""
-BOT_MAX_TASKS = 0
-BOT_PM = False
-CMD_SUFFIX = ""
-DEFAULT_LANG = "en"
-DATABASE_URL = ""
-DEFAULT_UPLOAD = "rc"
-DELETE_LINKS = False
-DEBRID_LINK_API = ""
-DISABLE_TORRENTS = False
-DISABLE_LEECH = False
-DISABLE_MIRROR = False
-DISABLE_BULK = False
-DISABLE_MULTI = False
-DISABLE_SEED = False
-DISABLE_FF_MODE = False
-DISABLE_MEGA = False
-DISABLE_PLUGINS = False
-DISABLE_JD = True
-DISABLE_NZB = True
-DISABLE_SEEDR = True
-DISABLE_RSS = False
-DISABLE_SEARCH = False
-DISABLE_STREAM = False
-DISABLE_YTDLP = False
-ENABLE_ENCODE = True
-ENABLE_COMPRESS = True
-ENABLE_WATERMARK = True
-ENABLE_FFMPEG_CMDS = True
-THUMBNAIL = ""
-PLUGIN_INDEXES = []
-EQUAL_SPLITS = False
-EXCLUDED_EXTENSIONS = ""
-FFMPEG_CMDS = {}
-FFMPEG_DUMP = {}
-FILELION_API = ""
-MEDIA_STORE = True
-FORCE_SUB_IDS = ""
-GOFILE_API = ""
-GOFILE_FOLDER_ID = ""
-GOFILE_AUTO_CREATE_FOLDER = False
-PIXELDRAIN_KEY = ""
-PROTECTED_API = ""
-BUZZHEAVIER_API = ""
-DEVUPLOADS_KEY = ""
-DEVUPLOADS_FOLDER = ""
-VIKINGFILE_HASH = ""
-VIKINGFILE_FOLDER = ""
-GDRIVE_ID = ""
-GD_DESP = "Uploaded with CANTARELLABOTS"
-AUTHOR_NAME = "TENKA"
-AUTHOR_URL = "https://t.me/cantarella_wuwa"
-INSTADL_API = ""
-IMDB_TEMPLATE = ""
-IMAGES = [
-    "https://i.pinimg.com/564x/b5/6a/22/b56a229148586984a9333522caa533b9.jpg",
-    "https://i.pinimg.com/736x/00/64/e5/0064e52ee1fbe13a1d58645dd968a286.jpg",
-    "https://i.pinimg.com/736x/eb/dd/9e/ebdd9ef30457d32bd5ee0b9c22606078.jpg",
-    "https://i.pinimg.com/736x/ff/3e/0a/ff3e0a570aa6fdc2c3d2d291e3d6a4a8.jpg",
-    "https://i.pinimg.com/736x/d1/39/bf/d139bfbcfb71af1e9e2ff8afca32201c.jpg",
-    "https://i.pinimg.com/564x/4c/e6/c2/4ce6c2b18fca27227e8262d16b3c4855.jpg",
-    "https://i.pinimg.com/564x/48/ea/00/48ea0003ab040bf6395fee71220a4420.jpg",
-    "https://i.pinimg.com/736x/33/5b/17/335b17b76f53d46ab8c95063222b8074.jpg",
-    "https://i.pinimg.com/564x/fb/eb/af/fbebafee28eed8b1b776673e545830b4.jpg",
-    "https://i.pinimg.com/564x/87/18/2b/87182be3e5d4a482a0f10083131aab6e.jpg",
-]
-IMG_SEARCH = ""
-IMG_PAGE = 1
-USE_IMAGES = True
-IMG_SOURCES = ["wallpaperflare"]
-INC_TASK_NOTIFY = False
-INC_TASK_RESUME = False
-INDEX_URL = ""
-IS_TEAM_DRIVE = False
-JD_EMAIL = ""
-JD_PASS = ""
-MEGA_EMAIL = ""
-MEGA_PASSWORD = ""
-SEEDR_EMAIL = ""
-SEEDR_PASSWORD = ""
-SEEDR_DELETE_FOLDER = False
-DIRECT_LIMIT = 0
-MEGA_LIMIT = 0
-TORRENT_LIMIT = 0
-GD_DL_LIMIT = 0
-RC_DL_LIMIT = 0
-CLONE_LIMIT = 0
-JD_LIMIT = 0
-NZB_LIMIT = 0
-SEEDR_LIMIT = 0
-YTDLP_LIMIT = 0
-PLAYLIST_LIMIT = 0
-LEECH_LIMIT = 0
-EXTRACT_LIMIT = 0
-ARCHIVE_LIMIT = 0
-STORAGE_LIMIT = 0
-LEECH_LOG_CHAT = ""
-LEECH_DUMP_CHATS = {}
-LINKS_LOG_ID = ""
-MIRROR_LOG_ID = ""
-LEECH_PREFIX = ""
-LEECH_CAPTION = ""
-LEECH_SUFFIX = ""
-LEECH_FONT = ""
-LEECH_SPLIT_SIZE = 2097152000
-MEDIA_GROUP = False
-USE_HYPER = True
-HYPER_THREADS = 0
-HYPER_PIPELINE = 64
-HYPER_CHUNK = 8 * 1024 * 1024
-MEM_BUDGET = 0
-MEM_DEEP_STATS = False
-STREAM_PIPELINE = 32
-STREAM_CHUNK = 2097152
-STREAM_PER_CLIENT = 12
-STREAM_GATE = 96
-CPU_LIMIT = 20
-FFMPEG_CORES = "auto"
-THROTTLE_SERVICES = "auto"
-HYDRA_IP = ""
-HYDRA_API_KEY = ""
-NAME_SWAP = ""
-PROGRESS_BAR = "■□"
-QUEUE_ALL = 0
-QUEUE_DOWNLOAD = 0
-QUEUE_UPLOAD = 0
-RCLONE_FLAGS = ""
-RCLONE_PATH = ""
-RCLONE_SERVE_URL = ""
-SHOW_CLOUD_LINK = True
-RCLONE_SERVE_USER = ""
-RCLONE_SERVE_PASS = ""
-RCLONE_SERVE_PORT = 8081
-RSS_CHAT = ""
-RSS_DELAY = 600
-RSS_SIZE_LIMIT = 0
-SEARCH_API_LINK = ""
-SEARCH_LIMIT = 0
-SEARCH_PLUGINS = []
-SET_COMMANDS = True
-STATUS_LIMIT = 10
-STATUS_UPDATE_INTERVAL = 5
-STOP_DUPLICATE = False
-STREAMWISH_API = ""
-SUDO_USERS = ""
-TG_PROXY = None
-THUMBNAIL_LAYOUT = ""
-TMDB_ACCESS_TOKEN = ""
-AUTO_THUMBNAIL = False
-VERIFY_TIMEOUT = 0
-LOGIN_PASS = ""
-TORRENT_TIMEOUT = 0
-TIMEZONE = "Asia/Kolkata"
-USER_MAX_TASKS = 0
-USER_TIME_INTERVAL = 0
-UPLOAD_PATHS = {}
-DRIVE_CATEGORY_MODE = False
-DRIVE_CATEGORY_SA = ""
-UPSTREAM_REPO = "https://github.com/shinubo28always/WZML"
-UPSTREAM_BRANCH = "main"
-USENET_SERVERS = []
-USER_SESSION_STRING = ""
-TRANSMISSION_MODE = "both"
-USE_SERVICE_ACCOUNTS = False
-ENABLE_TELEMETRY = True
-WEB_ACCESS_PASSWORD = ""
-WEB_PINCODE = True
-YT_DLP_OPTIONS = {}
-YT_DESP = "Uploaded with CANTARELLABOTS"
-YT_TAGS = ["telegram", "bot", "youtube"]
-YT_CATEGORY_ID = 22
-YT_PRIVACY_STATUS = "unlisted"
+from pyrogram.types import Message, InputMediaPhoto, ReplyParameters
+from pyrogram.enums import ButtonStyle, ParseMode
+from pyrogram.errors import (
+    FloodWait,
+    MessageNotModified,
+    MessageEmpty,
+    MessageTooLong,
+    MessageDeleteForbidden,
+    ReplyMarkupInvalid,
+    PhotoInvalidDimensions,
+    WebpageCurlFailed,
+    WebpageMediaEmpty,
+    MediaEmpty,
+    MediaCaptionTooLong,
+    EntityBoundsInvalid,
+    PeerIdInvalid,
+)
+
+try:
+    from pyrogram.errors import FloodPremiumWait
+except ImportError:
+    FloodPremiumWait = FloodWait
+
+from ... import (
+    LOGGER,
+    bot_cache,
+    categories_dict,
+    intervals,
+    status_dict,
+    task_dict_lock,
+    user_data,
+)
+from ...core.config_manager import Config
+from ...core.tg_client import TgClient
+from ..ext_utils.bot_utils import SetInterval, download_image_url, fetch_drive_cat
+from ..ext_utils.exceptions import TgLinkException
+from ..ext_utils.status_utils import get_readable_message
+from .button_build import ButtonMaker
+
+_image_index = 0
+
+
+def get_next_image():
+    global _image_index
+    if not Config.USE_IMAGES or not Config.IMAGES:
+        return None
+    img = Config.IMAGES[_image_index % len(Config.IMAGES)]
+    _image_index = (_image_index + 1) % len(Config.IMAGES)
+    return img
+
+
+async def send_message(message, text, buttons=None, block=True, photo=None, **kwargs):
+    img_photo = get_next_image() if photo == "IMAGES" else photo
+    try:
+        if img_photo:
+            try:
+                if isinstance(message, Message):
+                    return await message.reply_photo(
+                        photo=img_photo,
+                        caption=text,
+                        reply_parameters=ReplyParameters(message_id=message.id),
+                        reply_markup=buttons,
+                        disable_notification=True,
+                        **kwargs,
+                    )
+                return await TgClient.bot.send_photo(
+                    chat_id=message,
+                    photo=img_photo,
+                    caption=text,
+                    reply_markup=buttons,
+                    disable_notification=True,
+                    **kwargs,
+                )
+            except FloodWait as f:
+                LOGGER.warning(str(f))
+                if not block:
+                    return str(f)
+                await sleep(f.value * 1.2)
+                return await send_message(message, text, buttons, block, photo)
+            except MediaCaptionTooLong:
+                return await send_message(
+                    message,
+                    text[:1024],
+                    buttons,
+                    block,
+                    photo,
+                )
+            except (
+                PhotoInvalidDimensions,
+                WebpageCurlFailed,
+                WebpageMediaEmpty,
+                MediaEmpty,
+            ):
+                try:
+                    des_dir = await download_image_url(img_photo)
+                    if des_dir:
+                        msg = await send_message(message, text, buttons, block, des_dir)
+                        from aiofiles.os import remove as aioremove
+
+                        await aioremove(des_dir)
+                        return msg
+                except Exception:
+                    LOGGER.error("Failed to send fallback photo", exc_info=True)
+                return
+            except Exception:
+                LOGGER.error("Error while sending photo", exc_info=True)
+                return
+        if not isinstance(text, str):
+            text = str(text)
+
+        if isinstance(message, Message):
+            return await message.reply(
+                text=text,
+                reply_parameters=ReplyParameters(message_id=message.id),
+                disable_web_page_preview=True,
+                disable_notification=True,
+                reply_markup=buttons,
+                **kwargs,
+            )
+        return await TgClient.bot.send_message(
+            chat_id=int(message),
+            text=text,
+            disable_web_page_preview=True,
+            disable_notification=True,
+            reply_markup=buttons,
+        )
+    except FloodWait as f:
+        LOGGER.warning(str(f))
+        if not block:
+            return str(f)
+        await sleep(f.value * 1.2)
+        return await send_message(message, text, buttons)
+    except ReplyMarkupInvalid as rmi:
+        LOGGER.warning(str(rmi))
+        return await send_message(message, text, None)
+    except MessageTooLong:
+        return await send_message(message, text[:4096], buttons, block, photo)
+    except (MessageEmpty, EntityBoundsInvalid):
+        return await send_message(message, text, parse_mode=ParseMode.DISABLED)
+    except PeerIdInvalid:
+        LOGGER.warning(f"PeerIdInvalid {type(message)}")
+        if isinstance(message, (int, str)):
+            return await send_message(int(message), text, buttons, block, photo)
+    except ConnectionError:
+        return
+    except Exception as e:
+        LOGGER.error(str(e), exc_info=True)
+        return str(e)
+
+
+async def edit_message(message, text, buttons=None, block=True, photo=None):
+    img_photo = get_next_image() if photo == "IMAGES" else photo
+    try:
+        if not isinstance(text, str):
+            text = str(text)
+        if message.media:
+            caption_text = text[:1020] + "..." if len(text) > 1024 else text
+            if img_photo:
+                try:
+                    return await message.edit_media(
+                        InputMediaPhoto(img_photo, caption_text), reply_markup=buttons
+                    )
+                except (
+                    PhotoInvalidDimensions,
+                    WebpageCurlFailed,
+                    WebpageMediaEmpty,
+                    MediaEmpty,
+                ):
+                    des_dir = await download_image_url(img_photo)
+                    if des_dir:
+                        msg = await message.edit_media(
+                            InputMediaPhoto(des_dir, caption_text), reply_markup=buttons
+                        )
+                        from aiofiles.os import remove as aioremove
+
+                        await aioremove(des_dir)
+                        return msg
+                    return await message.edit_caption(
+                        caption=caption_text, reply_markup=buttons
+                    )
+            return await message.edit_caption(caption=caption_text, reply_markup=buttons)
+
+        msg_text = text[:4090] + "..." if len(text) > 4096 else text
+        return await message.edit(
+            text=msg_text,
+            disable_web_page_preview=True,
+            reply_markup=buttons,
+        )
+    except (MessageNotModified, MessageEmpty):
+        pass
+    except ReplyMarkupInvalid as rmi:
+        LOGGER.warning(str(rmi))
+        return await edit_message(message, text, None, block, photo)
+    except FloodWait as f:
+        LOGGER.warning(str(f))
+        if not block:
+            return str(f)
+        await sleep(f.value * 1.2)
+        return await edit_message(message, text, buttons, block, photo)
+    except OSError:
+        return
+    except Exception as e:
+        LOGGER.error(str(e), exc_info=True)
+        return str(e)
+
+
+async def edit_reply_markup(message, buttons):
+    try:
+        return await message.edit_reply_markup(reply_markup=buttons)
+    except MessageNotModified:
+        pass
+    except FloodWait as f:
+        LOGGER.warning(str(f))
+        await sleep(f.value * 1.2)
+        return await edit_reply_markup(message, buttons)
+    except OSError:
+        return
+    except Exception as e:
+        LOGGER.error(str(e), exc_info=True)
+        return str(e)
+
+
+async def send_file(message, file, caption="", buttons=None):
+    try:
+        return await message.reply_document(
+            document=file,
+            reply_parameters=ReplyParameters(message_id=message.id),
+            caption=caption,
+            disable_notification=True,
+            reply_markup=buttons,
+        )
+    except FloodWait as f:
+        LOGGER.warning(str(f))
+        await sleep(f.value * 1.2)
+        return await send_file(message, file, caption)
+    except ConnectionError:
+        return
+    except Exception as e:
+        LOGGER.error(str(e), exc_info=True)
+        return str(e)
+
+
+async def send_rss(text, chat_id, thread_id):
+    try:
+        return await TgClient.bot.send_message(
+            chat_id=chat_id,
+            text=text,
+            disable_web_page_preview=True,
+            message_thread_id=thread_id,
+            disable_notification=True,
+        )
+    except (FloodWait, FloodPremiumWait) as f:
+        LOGGER.warning(str(f))
+        await sleep(f.value * 1.2)
+        return await send_rss(text, chat_id, thread_id)
+    except ConnectionError:
+        return
+    except Exception as e:
+        LOGGER.error(str(e), exc_info=True)
+        return str(e)
+
+
+async def delete_message(*args):
+    tasks = [msg.delete() for msg in args if isinstance(msg, Message)]
+    if not tasks:
+        return
+    results = await gather(*tasks, return_exceptions=True)
+    for result in results:
+        if isinstance(result, MessageDeleteForbidden):
+            pass
+        elif isinstance(result, Exception):
+            LOGGER.error(result)
+
+
+async def delete_links(message):
+    if Config.DELETE_LINKS:
+        await delete_message(message, message.reply_to_message)
+
+
+async def auto_delete_message(*args, stime=90):
+    await sleep(stime)
+    await delete_message(*args)
+
+
+async def delete_status():
+    async with task_dict_lock:
+        for key, data in list(status_dict.items()):
+            try:
+                await delete_message(data["message"])
+                del status_dict[key]
+            except Exception as e:
+                LOGGER.error(str(e))
+
+
+def _parse_single_tg_link(link: str):
+    if link.startswith(
+        (
+            "https://t.me/",
+            "https://telegram.me/",
+            "https://telegram.dog/",
+            "https://telegram.space/",
+        )
+    ):
+        private = False
+        msg = re_match(
+            r"https:\/\/(t\.me|telegram\.me|telegram\.dog|telegram\.space)\/(?:c\/)?([^\/]+)(?:\/[^\/]+)?\/([0-9-]+)",
+            link,
+        )
+    else:
+        private = True
+        msg = re_match(
+            r"tg:\/\/(openmessage)\?user_id=([0-9]+)&message_id=([0-9-]+)", link
+        )
+
+    if not msg:
+        raise TgLinkException(f"Invalid Telegram link: {link}")
+
+    chat = msg[2]
+    msg_id = msg[3]
+
+    if "-" in msg_id:
+        parts = msg_id.split("-")
+        if len(parts) == 2 and parts[0].isdigit() and parts[1].isdigit():
+            start_id, end_id = int(parts[0]), int(parts[1])
+            if start_id <= end_id:
+                msg_ids = list(range(start_id, end_id + 1))
+            else:
+                msg_ids = list(range(start_id, end_id - 1, -1))
+        else:
+            raise TgLinkException(f"Invalid Telegram range link: {link}")
+    else:
+        if msg_id.isdigit():
+            msg_ids = int(msg_id)
+        else:
+            raise TgLinkException(f"Invalid Telegram message ID in link: {link}")
+
+    if chat.isdigit():
+        chat = int(chat) if private else int(f"-100{chat}")
+
+    return chat, msg_ids, private
+
+
+def parse_tg_link(link: str):
+    from re import findall as re_findall
+    link = link.strip()
+    urls = re_findall(
+        r"(?:https?:\/\/(?:t\.me|telegram\.me|telegram\.dog|telegram\.space)\/(?:c\/)?[^\/\s]+\/(?:[^\/\s]+\/)?[0-9]+|tg:\/\/openmessage\?[^\s]+)",
+        link,
+    )
+    if len(urls) >= 2:
+        chat1, id1, priv1 = _parse_single_tg_link(urls[0])
+        chat2, id2, priv2 = _parse_single_tg_link(urls[1])
+        if chat1 != chat2:
+            raise TgLinkException("Chat ID mismatch in range links!")
+        start_id = id1[0] if isinstance(id1, list) else id1
+        end_id = id2[0] if isinstance(id2, list) else id2
+        if start_id <= end_id:
+            msg_ids = list(range(start_id, end_id + 1))
+        else:
+            msg_ids = list(range(start_id, end_id - 1, -1))
+        return chat1, msg_ids, priv1 or priv2
+
+    return _parse_single_tg_link(link)
+
+
+async def get_tg_link_message(link, range_mode="normal", user_id=None, user_dict=None):
+    chat, msg_ids, private = parse_tg_link(link)
+
+    # Prefer the requesting user's configured personal session.  This is
+    # intentionally independent of the global OWNER/USER_SESSION_STRING so
+    # one user's private Telegram access cannot be reused by another user.
+    personal_user = None
+    if user_id is not None:
+        try:
+            from ... import user_data
+            uid = int(user_id)
+            data = user_dict if isinstance(user_dict, dict) else user_data.get(uid, {})
+            session_string = data.get("TELEGRAM_SESSION_STRING") if data else None
+            if session_string:
+                personal_user = await TgClient.get_personal_user(uid, session_string)
+                if personal_user:
+                    LOGGER.info(f"Using personal Telegram session for user {uid} to resolve {link}")
+        except Exception as e:
+            LOGGER.warning(f"Failed to initialize personal Telegram session for user {user_id}: {e}")
+
+    session_user = personal_user or TgClient.user
+    if private and not session_user:
+        raise TgLinkException(
+            "🔐 Private Telegram link requires your configured session string. "
+            "Open Settings → Telegram Session and set a valid session string."
+        )
+
+    is_range = isinstance(msg_ids, list)
+
+    if is_range and range_mode == "each":
+        links_list = []
+        for mid in msg_ids:
+            if private or (isinstance(chat, int) and str(chat).startswith("-100")):
+                cid = str(chat)[4:] if str(chat).startswith("-100") else str(chat)
+                links_list.append(f"https://t.me/c/{cid}/{mid}")
+            else:
+                links_list.append(f"https://t.me/{chat}/{mid}")
+        return links_list, "bot"
+
+    if not private:
+        try:
+            messages = await TgClient.bot.get_messages(chat_id=chat, message_ids=msg_ids)
+            if is_range:
+                if not isinstance(messages, list):
+                    messages = [messages]
+                valid_msgs = [m for m in messages if m and not getattr(m, "empty", False)]
+                if valid_msgs:
+                    return valid_msgs, "bot"
+                private = True
+            else:
+                if messages and not getattr(messages, "empty", False):
+                    return messages, "bot"
+                private = True
+        except Exception as e:
+            private = True
+            if not session_user:
+                raise e
+
+    if session_user:
+        try:
+            user_messages = await session_user.get_messages(chat_id=chat, message_ids=msg_ids)
+            if is_range:
+                if not isinstance(user_messages, list):
+                    user_messages = [user_messages]
+                valid_msgs = [m for m in user_messages if m and not getattr(m, "empty", False)]
+                if valid_msgs:
+                    return valid_msgs, "user"
+                raise TgLinkException("No valid messages found in the specified range!")
+            else:
+                if user_messages and not getattr(user_messages, "empty", False):
+                    return user_messages, "user"
+                raise TgLinkException("Message not found or empty!")
+        except Exception as e:
+            raise TgLinkException(
+                f"🔒 You do not have access to this Telegram chat/message. ERROR: {e}"
+            ) from e
+    else:
+        raise TgLinkException(
+            "🔒 Unable to access this Telegram message. Check that your configured session "
+            "belongs to an account that can access the chat/message, then try again."
+        )
+
+
+async def update_status_message(sid, force=False):
+    if intervals["stopAll"]:
+        return
+    async with task_dict_lock:
+        if not status_dict.get(sid):
+            if obj := intervals["status"].get(sid):
+                obj.cancel()
+                del intervals["status"][sid]
+            return
+        if not force and time() - status_dict[sid]["time"] < 3:
+            return
+        status_dict[sid]["time"] = time()
+        page_no = status_dict[sid]["page_no"]
+        status = status_dict[sid]["status"]
+        is_user = status_dict[sid]["is_user"]
+        page_step = status_dict[sid]["page_step"]
+        text, buttons = await get_readable_message(
+            sid, is_user, page_no, status, page_step
+        )
+        if text is None:
+            del status_dict[sid]
+            if obj := intervals["status"].get(sid):
+                obj.cancel()
+                del intervals["status"][sid]
+            return
+        if text != status_dict[sid]["message"].text:
+            message = await edit_message(
+                status_dict[sid]["message"], text, buttons, block=False, photo="IMAGES"
+            )
+            if isinstance(message, str):
+                if message.startswith("Telegram says: [40"):
+                    del status_dict[sid]
+                    if obj := intervals["status"].get(sid):
+                        obj.cancel()
+                        del intervals["status"][sid]
+                else:
+                    LOGGER.error(
+                        f"Status with id: {sid} haven't been updated. Error: {message}"
+                    )
+                return
+            status_dict[sid]["message"].text = text
+            status_dict[sid]["time"] = time()
+
+
+async def send_status_message(msg, user_id=0, force_new=False):
+    if intervals["stopAll"]:
+        return
+    sid = user_id or msg.chat.id
+    is_user = bool(user_id)
+    async with task_dict_lock:
+        if sid in status_dict:
+            page_no = status_dict[sid]["page_no"]
+            status = status_dict[sid]["status"]
+            page_step = status_dict[sid]["page_step"]
+            text, buttons = await get_readable_message(
+                sid, is_user, page_no, status, page_step
+            )
+            if text is None:
+                del status_dict[sid]
+                if obj := intervals["status"].get(sid):
+                    obj.cancel()
+                    del intervals["status"][sid]
+                return
+
+            if not force_new and status_dict[sid].get("message"):
+                edited = await edit_message(
+                    status_dict[sid]["message"], text, buttons, block=False, photo="IMAGES"
+                )
+                if not isinstance(edited, str):
+                    status_dict[sid]["message"].text = text
+                    status_dict[sid]["time"] = time()
+                    return
+
+            old_message = status_dict[sid]["message"]
+            message = await send_message(
+                msg, text, buttons, block=False, photo="IMAGES"
+            )
+            if isinstance(message, str):
+                LOGGER.error(
+                    f"Status with id: {sid} haven't been sent. Error: {message}"
+                )
+                return
+            await delete_message(old_message)
+            message.text = text
+            status_dict[sid].update({"message": message, "time": time()})
+        else:
+            text, buttons = await get_readable_message(sid, is_user)
+            if text is None:
+                return
+            message = await send_message(
+                msg, text, buttons, block=False, photo="IMAGES"
+            )
+            if isinstance(message, str):
+                LOGGER.error(
+                    f"Status with id: {sid} haven't been sent. Error: {message}"
+                )
+                return
+            message.text = text
+            status_dict[sid] = {
+                "message": message,
+                "time": time(),
+                "page_no": 1,
+                "page_step": 1,
+                "status": "All",
+                "is_user": is_user,
+            }
+        if not intervals["status"].get(sid) and not is_user:
+            intervals["status"][sid] = SetInterval(
+                Config.STATUS_UPDATE_INTERVAL, update_status_message, sid
+            )
+
+
+async def open_category_btns(message):
+    user_id = message.from_user.id
+    msg_id = message.id
+    buttons = ButtonMaker()
+    cat_name = None
+    dcats = fetch_drive_cat(user_id)
+    default_id = user_data.get(user_id, {}).get("GDRIVE_ID") or Config.GDRIVE_ID
+    default_index = user_data.get(user_id, {}).get("INDEX_URL") or Config.INDEX_URL
+    merged = {
+        "Default": {"drive_id": default_id, "index_link": default_index},
+        **dcats,
+        **categories_dict,
+    }
+    for i, name in enumerate(merged):
+        if i == 0:
+            cat_name = name
+        buttons.data_button(
+            f"{'✓' if i == 0 else ''} {name}",
+            f"scat {user_id} {msg_id} {name.replace(' ', '_')}",
+        )
+    buttons.data_button(
+        "Cancel", f"scat {user_id} {msg_id} scancel", "footer", style=ButtonStyle.DANGER
+    )
+    buttons.data_button(
+        "Done (60)",
+        f"scat {user_id} {msg_id} sdone",
+        "footer",
+        style=ButtonStyle.SUCCESS,
+    )
+    prompt = await send_message(
+        message,
+        f"<b>📁 Select Upload Category</b>\n\n"
+        f"<blockquote>• <b>Upload Category:</b> <code>{cat_name or 'None'}</code>\n"
+        f"• <b>Timeout:</b> 60 sec</blockquote>",
+        buttons.build_menu(3),
+    )
+    start_time = time()
+    bot_cache[msg_id] = [None, None, False, False, start_time]
+    while time() - start_time <= 60:
+        await sleep(0.5)
+        if bot_cache[msg_id][2] or bot_cache[msg_id][3]:
+            break
+    drive_id, index_link, _, is_cancelled, __ = bot_cache[msg_id]
+    if not is_cancelled:
+        await delete_message(prompt)
+    else:
+        await edit_message(prompt, "<b>Task Cancelled</b>")
+    del bot_cache[msg_id]
+    return drive_id, index_link, is_cancelled
+
+
+async def open_drive_clean(message):
+    user_id = message.from_user.id
+    msg_id = message.id
+    buttons = ButtonMaker()
+    dcats = fetch_drive_cat(user_id)
+    default_id = user_data.get(user_id, {}).get("GDRIVE_ID") or Config.GDRIVE_ID
+    default_index = user_data.get(user_id, {}).get("INDEX_URL") or Config.INDEX_URL
+    merged = {
+        "Default": {"drive_id": default_id, "index_link": default_index},
+        **dcats,
+        **categories_dict,
+    }
+    first_cat = None
+    for i, name in enumerate(merged):
+        if i == 0:
+            first_cat = name
+        buttons.data_button(
+            f"{'✓' if i == 0 else ''} {name}",
+            f"gdccat {user_id} {msg_id} {name.replace(' ', '_')}",
+        )
+    buttons.data_button(
+        "Cancel",
+        f"gdccat {user_id} {msg_id} ccancel",
+        position="footer",
+        style=ButtonStyle.DANGER,
+    )
+    prompt = await send_message(
+        message,
+        f"<b>🧹 Select Drive Category to Clean</b>\n\n"
+        f"<blockquote>• <b>Category:</b> <code>{first_cat or 'None'}</code>\n"
+        f"• <b>Timeout:</b> 60 sec</blockquote>",
+        buttons.build_menu(3),
+    )
+    start_time = time()
+    bot_cache[msg_id] = [None, False, False, start_time, None]
+    while time() - start_time <= 60:
+        await sleep(0.5)
+        if bot_cache[msg_id][1] or bot_cache[msg_id][2]:
+            break
+    drive_id = bot_cache[msg_id][0]
+    is_cancelled = bot_cache[msg_id][1]
+    cat_name = bot_cache[msg_id][4]
+    if not is_cancelled:
+        await delete_message(prompt)
+    else:
+        await edit_message(prompt, "<b>Task Cancelled</b>")
+    del bot_cache[msg_id]
+    return drive_id, is_cancelled, cat_name
+
+
+async def open_dump_chat_btns(message, dump_chats, invalid_name=None):
+    user_id = message.from_user.id
+    msg_id = message.id
+    cache_key = f"sdump_{msg_id}"
+    buttons = ButtonMaker()
+    dump_names = list(dump_chats)
+    selected_name = dump_names[0] if dump_names else None
+    for i, name in enumerate(dump_names):
+        buttons.data_button(
+            f"{'✓' if i == 0 else ''} {name}",
+            f"sdump {user_id} {msg_id} {i}",
+        )
+    buttons.data_button(
+        "Cancel",
+        f"sdump {user_id} {msg_id} scancel",
+        "footer",
+        style=ButtonStyle.DANGER,
+    )
+    buttons.data_button(
+        "Done (60)",
+        f"sdump {user_id} {msg_id} sdone",
+        "footer",
+        style=ButtonStyle.SUCCESS,
+    )
+    invalid_hint = (
+        f"\n\n<b>Unknown dump:</b> <code>{invalid_name}</code>" if invalid_name else ""
+    )
+    prompt = await send_message(
+        message,
+        f"<b>💬 Select Dump Chat Destination</b>{invalid_hint}\n\n"
+        f"<blockquote>• <b>Dump Chat:</b> <code>{selected_name or 'None'}</code>\n"
+        f"• <b>Timeout:</b> 60 sec</blockquote>",
+        buttons.build_menu(3),
+    )
+    start_time = time()
+    bot_cache[cache_key] = [dump_chats.get(selected_name), False, False, start_time]
+    while time() - start_time <= 60:
+        await sleep(0.5)
+        if bot_cache[cache_key][1] or bot_cache[cache_key][2]:
+            break
+    up_dest, _, is_cancelled, __ = bot_cache[cache_key]
+    if not is_cancelled:
+        await delete_message(prompt)
+    else:
+        await edit_message(prompt, "<b>Task Cancelled</b>")
+    del bot_cache[cache_key]
+    return up_dest, is_cancelled
